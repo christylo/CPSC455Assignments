@@ -16,24 +16,23 @@
   <body>
     <div class="container">
       <div class="intro">
-        <img class="profile-picture" src="../images/christy.png" />
-        <h1>Hello! My name is Christy ✌️</h1>
-        <p>I am an incoming 4th year studying business and computer science!</p>
+        <div id="left-content">
+          <img id="Logo" src="../images/daisy.png" />
+          <p id="Title">Memory Collection</p>
+        </div>
+        <p>Store photo memories in picture cards!</p>
       </div>
       <hr />
-      <h2 class="heading">What is Memory Page?</h2>
-      <div class="about-grid">
-        <div class="about-section">
-          <p>Memory Page is a webpage for storing funny, happy, and random photos of everyday life!</p>
-        </div>
-        <div class="about-section">
-          <p>Examples of photos to store:</p>
-          <ul class="about-list">
-            <li>&#128021 doggos being doggos</li>
-            <li>&#127793 picnics!</li>
-            <li>&#127757 travel shenanigans</li>
-          </ul>
-        </div>
+      <h2 class="heading">Add Picture Card</h2>
+      <div id="AddCard">
+        <form>
+          <label for="imageName">Image name:</label>
+          <input type="text" id="imageName" name="imageName"><br><br>
+          <label for="imageURL">Image URL:</label>
+          <input type="text" id="imageURL" name="imageURL"><br><br>
+          <input type="button" value="Add Photo" onclick="addPhoto()">
+          <input type="button" value="Clear Fields" onclick="clearFields()">
+        </form>
       </div>
       <hr />
       <h2 class="heading">Highlights</h2>

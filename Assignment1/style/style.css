@@ -29,6 +29,30 @@ nav {
   background-color: #aaface;
 }
 
+/* Title section */
+#left-content {
+  width: 70%;
+  display: inline-block;
+}
+
+#Logo {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+#Title {
+  display: inline-block;
+  vertical-align: top;
+  width: 75%;
+  text-align: center;
+  font-size: 300%;
+  font-family: 'Indie Flower', cursive;
+  font-stretch: expanded;
+}
+
 /* Body container */
 .container {
   max-width: 840px;
@@ -126,4 +150,9 @@ hr {
   .highlights-grid {
     grid-template-columns: 100%;
   }
+}
+
+/* Add picture card section */
+#AddCard {
+  text-align: center;
 }
