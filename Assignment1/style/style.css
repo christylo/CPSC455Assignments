@@ -1,3 +1,34 @@
+/* Nav bar section */
+nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #e2f8ec;
+}
+
+.navbar {
+  float: left;
+}
+
+.navbar a {
+  display: block;
+  color: black;
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+  font-size:larger;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbar a:hover:not(.active) {
+  background-color: rgb(140, 250, 244);
+}
+
+.active {
+  background-color: #aaface;
+}
+
 /* Body container */
 .container {
   max-width: 840px;
