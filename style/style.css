@@ -41,6 +41,7 @@ nav {
   display: inline-block;
   margin-left: 25px;
   margin-top: 25px;
+  animation: rotation 10s infinite linear;
 }
 
 #Title {
@@ -51,6 +52,15 @@ nav {
   font-size: 300%;
   font-family: 'Indie Flower', cursive;
   font-stretch: expanded;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
 
 /* Body container */
