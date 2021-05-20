@@ -37,9 +37,15 @@
         </form>
       </div>
       <hr />
-      <h2 class="heading">Polaroids</h2>
+      <div class="flex-container">
+        <div id="PolaroidHeader">
+          <h2 class="heading">Polaroids</h2>
+        </div>
+        <div id="DeleteAllCardsButton">
+          <button id="DeleteAllButton" onclick="deleteAll()">Delete All Polaroids</button>
+        </div>
+      </div>
       <div id="picture-container" class="highlights-grid"></div>
-      <button onclick="deleteAll()">Delete All Polaroids</button>
     </div>
     <script src="../script/logic.js"></script>
   </body>

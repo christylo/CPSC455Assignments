@@ -163,6 +163,28 @@ hr {
 }
 
 /* Add picture card section */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-child {
+  flex: 1;
+}  
+
+.flex-child:first-child {
+  margin-right: 20px;
+} 
+
+#DeleteAllCardsButton {
+  margin-top: 20px;
+}
+
+/* Button for deleting all the picture cards */
+#DeleteAllButton {
+  justify-self: center;
+}
+
 #AddCard {
   text-align: center;
 }
