@@ -1,0 +1,234 @@
+/* Nav bar section */
+nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #e2f8ec;
+}
+
+.navbar {
+  float: left;
+}
+
+.navbar a {
+  display: block;
+  color: black;
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+  font-size:larger;
+  padding: 14px 16px;
+  text-decoration: none;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.navbar a:hover:not(.active) {
+  background-color: rgb(201, 241, 240);
+  border-radius: 10px;
+}
+
+.active {
+  background-color: #c0f0d5;
+}
+
+/* Title section */
+#left-content {
+  width: 70%;
+  display: inline-block;
+}
+
+#Logo {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin-left: 25px;
+  margin-top: 25px;
+  animation: rotation 10s infinite linear;
+}
+
+#Title {
+  display: inline-block;
+  vertical-align: top;
+  width: 75%;
+  text-align: center;
+  font-size: 300%;
+  font-family: 'Indie Flower', cursive;
+  font-stretch: expanded;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+/* Body container */
+.container {
+  max-width: 840px;
+  margin: 96px auto;
+}
+
+/* Intro section */
+.intro {
+  text-align: center;
+}
+
+/* Fonts, text color, and background color */
+body {
+  background-color: #e2f8ec;
+  font-family: 'Noto Sans', sans-serif;
+  color: #333333;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Indie Flower', cursive;
+  font-stretch: expanded;
+}
+
+/* content divider*/
+hr {
+  border: 0;
+  margin: 48px 0;
+  height: 2px;
+  background-color: #f2fff8;
+}
+
+/* Styles for profile picture  */
+.profile-picture {
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  box-shadow: 0 4px 6px 0 rgba(34, 60, 80, 0.16);
+  transition: all ease-in-out 0.2s;
+}
+
+.profile-picture:hover {
+  box-shadow: 0 8px 16px 0 rgba(34, 60, 80, 0.16);
+}
+
+/* About section */
+.about-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.about-section {
+  text-align: center;
+  text-decoration: none;
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+}
+
+@media (max-width: 480px) {
+  .about-grid {
+    grid-template-columns: 100%;
+  }
+}
+
+/* highlights section */
+.heading {
+  margin-top: 24px;
+  text-align: left;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.highlights-image {
+  justify-self: center;
+  padding: 4%;
+  width: 300px;
+  height: 300px;
+  transition: all ease-in-out 0.2s;
+}
+
+.highlights-image:hover {
+  box-shadow: 0 8px 16px 0 rgba(34, 60, 80, 0.16);
+}
+
+@media (max-width: 650px) {
+  .highlights-grid {
+    grid-template-columns: 100%;
+  }
+}
+
+/* Add picture card section */
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.flex-child {
+  flex: 1;
+}  
+
+.flex-child:first-child {
+  margin-right: 20px;
+} 
+
+.textbox {
+  border-radius: 6px;
+  border: 1px solid black;
+}
+
+#DeleteAllCardsButton {
+  margin-top: 30px;
+}
+
+.button {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  border-radius: 10px;
+  transition-duration: 0.4s;
+  background-color: #e2f8ec;
+  border: 2px solid rgba(170, 170, 246, 0.986);
+}
+
+.button:hover {
+  background-color: rgba(170, 170, 246, 0.986);
+  color: white;
+}
+
+/* Button for deleting all the picture cards */
+#DeleteAllButton {
+  justify-self: center;
+}
+
+#AddCard {
+  text-align: center;
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  justify-self: center;
+  padding: 4%;
+  width: 300px;
+  background-color: white;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.text-container {
+  padding: 2px 16px;
+  text-align: center;
+}
