@@ -1,4 +1,5 @@
 let pictureArray = [];
+
 // adds inputted photo name and corresponding photo url to photo list and creates card for the photo
 function addPhoto() {
     const imageName = document.getElementById('imageName').value;
@@ -23,8 +24,8 @@ function createJSONObject(imageName, imageURL, imageDescription) {
 }
 
 // creates a photo card elements with array of JSON photos
-function createCard(pictureArray) {
-    const container = document.getElementById('container');
+function createCard() {
+    const container = document.getElementById('picture-container');
     let addedPicture = pictureArray.slice(-1).pop();
     let parsedJSONPicture = JSON.parse(addedPicture);
 
@@ -43,8 +44,27 @@ function createCard(pictureArray) {
         </div>
     `;
 
-    // appeand newly created card element to the container
+    // append newly created card element to the container
     container.innerHTML += content;
+}
+
+// removes all the picture cards that were previously added
+function deleteAll() {
+    pictureArray = [];
+    removeChildren({ parentId: 'picture-container', childName: 'card' });
+    console.log('removed');
+}
+
+// helper function for deleteAll() to remove all the child nodes of the picture-container class
+function removeChildren(params) {
+    let parentId = params.parentId;
+    let childName = params.childName;
+
+    let childNodesToRemove = document.getElementById(parentId).getElementsByClassName(childName);
+    for (let i = childNodesToRemove.length - 1; i >= 0; i--) {
+        let childNode = childNodesToRemove[i];
+        childNode.parentNode.removeChild(childNode);
+    }
 }
 
 // clears the input fields of current text
