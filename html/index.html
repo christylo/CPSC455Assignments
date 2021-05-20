@@ -20,28 +20,25 @@
           <img id="Logo" src="../images/daisy.png" />
           <p id="Title">Memory Collection</p>
         </div>
-        <p>Store photo memories in picture cards!</p>
+        <p>Store photo memories in digital polaroids!</p>
       </div>
       <hr />
-      <h2 class="heading">Add Picture Card</h2>
+      <h2 class="heading">Add Polaroid</h2>
       <div id="AddCard">
         <form>
           <label for="imageName">Image name:</label>
           <input type="text" id="imageName" name="imageName"><br><br>
           <label for="imageURL">Image URL:</label>
           <input type="text" id="imageURL" name="imageURL"><br><br>
+          <label for="imageDescription">Image description:</label>
+          <input type="text" id="imageDescription" name="imageDescription"><br><br>
           <input type="button" value="Add Photo" onclick="addPhoto()">
           <input type="button" value="Clear Fields" onclick="clearFields()">
         </form>
       </div>
       <hr />
-      <h2 class="heading">Picture Cards</h2>
-      <div id="container" class="highlights-grid">
-        <img class="highlights-image" src="../images/pupper.jpeg" />
-        <img class="highlights-image" src="../images/disney.JPG" />
-        <img class="highlights-image" src="../images/picnic.JPG" />
-        <img class="highlights-image" src="../images/water.JPG" />
-      </div>
+      <h2 class="heading">Polaroids</h2>
+      <div id="container" class="highlights-grid"></div>
     </div>
     <script src="../script/logic.js"></script>
   </body>
