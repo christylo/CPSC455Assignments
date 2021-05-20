@@ -70,5 +70,6 @@ function removeChildren(params) {
 // clears the input fields of current text
 function clearFields() {
     document.getElementById('imageName').value = "";
+    document.getElementById('imageDescription').value = "";
     document.getElementById('imageURL').value = "";
 }

@@ -19,14 +19,17 @@ nav {
   font-size:larger;
   padding: 14px 16px;
   text-decoration: none;
+  border-radius: 10px;
+  margin-right: 10px;
 }
 
 .navbar a:hover:not(.active) {
-  background-color: rgb(140, 250, 244);
+  background-color: rgb(201, 241, 240);
+  border-radius: 10px;
 }
 
 .active {
-  background-color: #aaface;
+  background-color: #c0f0d5;
 }
 
 /* Title section */
@@ -133,7 +136,6 @@ hr {
 }
 
 /* highlights section */
-
 .heading {
   margin-top: 24px;
   text-align: left;
@@ -176,8 +178,27 @@ hr {
   margin-right: 20px;
 } 
 
+.textbox {
+  border-radius: 6px;
+  border: 1px solid black;
+}
+
 #DeleteAllCardsButton {
-  margin-top: 20px;
+  margin-top: 30px;
+}
+
+.button {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  border-radius: 10px;
+  transition-duration: 0.4s;
+  background-color: #e2f8ec;
+  border: 2px solid rgba(170, 170, 246, 0.986);
+}
+
+.button:hover {
+  background-color: rgba(170, 170, 246, 0.986);
+  color: white;
 }
 
 /* Button for deleting all the picture cards */
