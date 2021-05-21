@@ -1,5 +1,44 @@
 let pictureArray = [];
 
+let preloadedCards = [
+    '{ "name":"Pupper", "url":"../images/pupper.jpeg", "description":"I want this doggo"}',
+    '{"name":"Disney", "url":"../images/disney.JPG", "description":"Disney California Adventure Park"}',
+    '{ "name":"Picnic", "url":"../images/picnic.JPG", "description":"spring picnic in SF"}',
+    '{ "name":"Beach Day", "url":"../images/water.JPG", "description":"summer beach day with friends"}'];
+
+function makePreloadedCards(stringfiedJSONArray) {
+    console.log('hi');
+    stringfiedJSONArray.map(val => {
+        createPreloadedCard(val);
+    })
+}
+
+window.onload = makePreloadedCards(preloadedCards);
+
+function createPreloadedCard(stringfiedCardVals) {
+    const container = document.getElementById('picture-container');
+    let addedPicture = stringfiedCardVals
+    let parsedJSONPicture = JSON.parse(addedPicture);
+
+    // create the card element
+    const card = document.createElement('div');
+    card.classList = 'card-body';
+
+    // construct the card content
+    const content = `
+        <div class="card">
+            <img class="card-image" src=${parsedJSONPicture.url} alt="Avatar" style="width:100%">
+            <div class="text-container">
+                <p><b>${parsedJSONPicture.name}</b></p>
+                <p>${parsedJSONPicture.description}</p>
+            </div>
+        </div>
+    `;
+
+    // append newly created card element to the container
+    container.innerHTML += content;
+}
+
 // adds inputted photo name and corresponding photo url to photo list and creates card for the photo
 function addPhoto() {
     const imageName = document.getElementById('imageName').value;
@@ -24,7 +63,7 @@ function createJSONObject(imageName, imageURL, imageDescription) {
 }
 
 // creates a photo card elements with array of JSON photos
-function createCard() {
+function createCard(pictureArray) {
     const container = document.getElementById('picture-container');
     let addedPicture = pictureArray.slice(-1).pop();
     let parsedJSONPicture = JSON.parse(addedPicture);
@@ -36,7 +75,7 @@ function createCard() {
     // construct the card content
     const content = `
         <div class="card">
-            <img src=${parsedJSONPicture.url} alt="Avatar" style="width:100%">
+            <img class="card-image" src=${parsedJSONPicture.url} alt="Avatar" style="width:100%">
             <div class="text-container">
                 <p><b>${parsedJSONPicture.name}</b></p>
                 <p>${parsedJSONPicture.description}</p>

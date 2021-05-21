@@ -232,3 +232,8 @@ hr {
   padding: 2px 16px;
   text-align: center;
 }
+
+.card-image {
+  height: 300px;
+  width: 300px;
+}
