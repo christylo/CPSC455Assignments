@@ -1,5 +1,21 @@
 let pictureArray = [];
 
+let preloadedCards = [
+    '{ "name":"Pupper", "url":"../images/pupper.jpeg", "description":"I want this doggo"}',
+    '{"name":"Disney", "url":"../images/disney.JPG", "description":"Disney California Adventure Park"}',
+    '{ "name":"Picnic", "url":"../images/picnic.JPG", "description":"spring picnic in SF"}',
+    '{ "name":"Beach Day", "url":"../images/water.JPG", "description":"summer beach day with friends"}'];
+
+// creating the initial cards
+function makePreloadedCards(stringfiedJSONArray) {
+    stringfiedJSONArray.map(val => {
+        createCard(val);
+    })
+}
+
+// rendering the initial cards once the page loads
+window.onload = makePreloadedCards(preloadedCards);
+
 // adds inputted photo name and corresponding photo url to photo list and creates card for the photo
 function addPhoto() {
     const imageName = document.getElementById('imageName').value;
@@ -24,9 +40,15 @@ function createJSONObject(imageName, imageURL, imageDescription) {
 }
 
 // creates a photo card elements with array of JSON photos
-function createCard() {
+function createCard(values) {
     const container = document.getElementById('picture-container');
-    let addedPicture = pictureArray.slice(-1).pop();
+    let addedPicture;
+    if (typeof (values) === Array) {
+        addedPicture = values.slice(-1).pop();
+    } else {
+        addedPicture = values
+    }
+
     let parsedJSONPicture = JSON.parse(addedPicture);
 
     // create the card element
@@ -36,7 +58,7 @@ function createCard() {
     // construct the card content
     const content = `
         <div class="card">
-            <img src=${parsedJSONPicture.url} alt="Avatar" style="width:100%">
+            <img class="card-image-longer" src=${parsedJSONPicture.url} alt="Avatar">
             <div class="text-container">
                 <p><b>${parsedJSONPicture.name}</b></p>
                 <p>${parsedJSONPicture.description}</p>
@@ -52,7 +74,6 @@ function createCard() {
 function deleteAll() {
     pictureArray = [];
     removeChildren({ parentId: 'picture-container', childName: 'card' });
-    console.log('removed');
 }
 
 // helper function for deleteAll() to remove all the child nodes of the picture-container class
