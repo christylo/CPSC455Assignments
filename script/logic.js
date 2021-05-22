@@ -9,7 +9,6 @@ let preloadedCards = [
 // creating the initial cards
 function makePreloadedCards(stringfiedJSONArray) {
     stringfiedJSONArray.map(val => {
-        console.log(typeof (val), 'preloaded card type');
         createPreloadedCards(val);
     })
 }
@@ -50,8 +49,6 @@ function addPhoto() {
     if (imageName && imageURL && imageDescription) {
         jsonPhoto = createJSONObject(imageName, imageURL, imageDescription);
         pictureArray.push(jsonPhoto);
-        console.log(pictureArray);
-        console.log(typeof (pictureArray), 'pictureArray type');
         createCard(pictureArray);
     }
 }
@@ -73,9 +70,7 @@ function createCard(values) {
 
     addedPicture = values.slice(-1).pop();
 
-    console.log('before parse')
     let parsedJSONPicture = JSON.parse(addedPicture);
-    console.log('after parse')
 
     // create the card element
     const card = document.createElement('div');
