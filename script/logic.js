@@ -9,8 +9,33 @@ let preloadedCards = [
 // creating the initial cards
 function makePreloadedCards(stringfiedJSONArray) {
     stringfiedJSONArray.map(val => {
-        createCard(val);
+        console.log(typeof (val), 'preloaded card type');
+        createPreloadedCards(val);
     })
+}
+
+function createPreloadedCards(val) {
+    const container = document.getElementById('picture-container');
+    let addedPicture = val;
+    let parsedJSONPicture = JSON.parse(addedPicture);
+
+    // create the card element
+    const card = document.createElement('div');
+    card.classList = 'card-body';
+
+    // construct the card content
+    const content = `
+        <div class="card">
+            <img class="card-image-longer" src=${parsedJSONPicture.url} alt="Avatar">
+            <div class="text-container">
+                <p><b>${parsedJSONPicture.name}</b></p>
+                <p>${parsedJSONPicture.description}</p>
+            </div>
+        </div>
+    `;
+
+    // append newly created card element to the container
+    container.innerHTML += content;
 }
 
 // rendering the initial cards once the page loads
@@ -25,6 +50,8 @@ function addPhoto() {
     if (imageName && imageURL && imageDescription) {
         jsonPhoto = createJSONObject(imageName, imageURL, imageDescription);
         pictureArray.push(jsonPhoto);
+        console.log(pictureArray);
+        console.log(typeof (pictureArray), 'pictureArray type');
         createCard(pictureArray);
     }
 }
@@ -43,13 +70,12 @@ function createJSONObject(imageName, imageURL, imageDescription) {
 function createCard(values) {
     const container = document.getElementById('picture-container');
     let addedPicture;
-    if (typeof (values) === Array) {
-        addedPicture = values.slice(-1).pop();
-    } else {
-        addedPicture = values
-    }
 
+    addedPicture = values.slice(-1).pop();
+
+    console.log('before parse')
     let parsedJSONPicture = JSON.parse(addedPicture);
+    console.log('after parse')
 
     // create the card element
     const card = document.createElement('div');
