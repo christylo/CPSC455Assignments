@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Form from "../components/Form";
+import daisyLogo from '../images/daisy.png';
 
 export default function Home() {
 
@@ -7,7 +8,7 @@ export default function Home() {
         <div class="container">
             <div class="intro">
                 <div id="left-content">
-                    <img id="Logo" src="../images/daisy.png" alt="Daisy Logo" />
+                    <img id="Logo" src={daisyLogo} alt="Daisy Logo" />
                     <p id="Title">Memory Collection</p>
                 </div>
                 <p>Store photo memories in digital polaroids!</p>

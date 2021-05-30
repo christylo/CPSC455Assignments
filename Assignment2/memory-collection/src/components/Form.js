@@ -1,4 +1,5 @@
 import { useInput } from "../hooks/input-hook";
+import '../style/style.css';
 
 export default function Form(props) {
     const { value: imageName, bind: bindImageName, reset: resetImageName } = useInput('');
@@ -17,7 +18,7 @@ export default function Form(props) {
                 Image Name:
                 <input class="textbox" id="imageName" name="imageName" type="text" {...bindImageName} />
             </label>
-            <br />
+            <br class="inputField" />
             <label>
                 Image URL:
                 <input class="textbox" type="text" id="imageURL" name="imageURL" {...bindImageURL} />

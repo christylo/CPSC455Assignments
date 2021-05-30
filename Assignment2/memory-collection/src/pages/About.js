@@ -1,8 +1,14 @@
+import profilePic from "../images/christy.png";
+import puppy from "../images/pupper.jpeg";
+import disney from "../images/disney.JPG";
+import picnic from "../images/picnic.JPG";
+import water from "../images/water.JPG";
+
 export default function About() {
     return (
         <div class="container">
             <div class="intro">
-                <img class="profile picture" src="../images/christy.png" alt="Christy" />
+                <img class="profile-picture" src={profilePic} alt="Christy" />
                 <h1>Hello! My name is Christy ✌️</h1>
                 <p>I am an incoming 4th year studying business and computer science!</p>
             </div>
@@ -25,10 +31,10 @@ export default function About() {
             <hr />
             <h2 class="heading">Highlights</h2>
             <div class="highlights-grid">
-                <img class="highlights-image" src="../images/pupper.jpeg" alt="puppy" />
-                <img class="highlights-image" src="../images/disney.JPG" alt="Disney" />
-                <img class="highlights-image" src="../images/picnic.JPG" alt="picnic" />
-                <img class="highlights-image" src="../images/water.JPG" alt="water" />
+                <img class="highlights-image" src={puppy} alt="puppy" />
+                <img class="highlights-image" src={disney} alt="Disney" />
+                <img class="highlights-image" src={picnic} alt="picnic" />
+                <img class="highlights-image" src={water} alt="water" />
             </div>
         </div>
     );
