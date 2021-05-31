@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import Form from "../components/Form";
+import Polaroid from "../components/Polaroid";
 import daisyLogo from '../images/daisy.png';
+import Cards from "../components/Cards";
 
 export default function Home() {
+
+    const [imageName, setImageName] = useState("");
+    const [imageDescription, setImageDescription] = useState("");
+    const [imageURL, setImageURL] = useState("");
 
     return (
         <div class="container">
@@ -26,7 +32,7 @@ export default function Home() {
                         <button id="DeleteAllButton" class="button" onclick="deleteAll()">Delete All Polaroids</button>
                     </div>
                 </div>
-                <div id="picture-container" class="highlights-grid"></div>
+                <Cards></Cards>
             </div>
         </div>
     );

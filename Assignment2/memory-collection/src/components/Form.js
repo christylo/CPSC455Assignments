@@ -4,12 +4,14 @@ import '../style/style.css';
 export default function Form(props) {
     const { value: imageName, bind: bindImageName, reset: resetImageName } = useInput('');
     const { value: imageURL, bind: bindImageURL, reset: resetImageURL } = useInput('');
+    const { value: imageDescription, bind: bindImageDescription, reset: resetImageDescription } = useInput('');
 
     const clearFields = (evt) => {
         evt.preventDefault();
         // alert(`Submitting Name ${imageName} ${imageURL}`);
         resetImageName();
         resetImageURL();
+        resetImageDescription();
     }
 
     return (
@@ -18,7 +20,12 @@ export default function Form(props) {
                 Image Name:
                 <input class="textbox" id="imageName" name="imageName" type="text" {...bindImageName} />
             </label>
-            <br class="inputField" />
+            <br />
+            <label>
+                Image Description:
+                <input class="textbox" type="text" id="imageDescription" name="imageDescription" {...bindImageDescription} />
+            </label>
+            <br />
             <label>
                 Image URL:
                 <input class="textbox" type="text" id="imageURL" name="imageURL" {...bindImageURL} />
