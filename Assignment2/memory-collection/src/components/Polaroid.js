@@ -13,11 +13,9 @@ export default function Polaroid(props) {
                     <p><b>{props.name}</b></p>
                     <p>{props.description}</p>
                 </div>
-
             </div>
             {visibility && <Modal setVisibility={setVisibility} />}
         </div>
-
     );
 }
 
