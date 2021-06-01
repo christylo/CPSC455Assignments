@@ -1,38 +1,49 @@
-import { useInput } from "../hooks/input-hook";
+import { useState } from "react";
 import '../style/style.css';
 
 export default function Form(props) {
-    const { value: imageName, bind: bindImageName, reset: resetImageName } = useInput('');
-    const { value: imageURL, bind: bindImageURL, reset: resetImageURL } = useInput('');
-    const { value: imageDescription, bind: bindImageDescription, reset: resetImageDescription } = useInput('');
 
-    const clearFields = (evt) => {
-        evt.preventDefault();
-        // alert(`Submitting Name ${imageName} ${imageURL}`);
-        resetImageName();
-        resetImageURL();
-        resetImageDescription();
+    const [imageName, setImageName] = useState("");
+    const [imageDescription, setImageDescription] = useState("");
+    const [imageURL, setImageURL] = useState("");
+
+    function clearFields() {
+        setImageName("");
+        setImageDescription("");
+        setImageURL("");
+    }
+
+    function createCard(name, description, url) {
+        const newCard = {
+            name,
+            url,
+            description
+        }
+
+        const newCards = [...props.cards, newCard];
+        console.log(newCards);
+        props.setCards(newCards);
     }
 
     return (
-        <form onSubmit={clearFields}>
+        <form>
             <label>
                 Image Name:
-                <input class="textbox" id="imageName" name="imageName" type="text" {...bindImageName} />
+                <input class="textbox" id="imageName" name="imageName" type="text" value={imageName} onChange={((evt) => setImageName(evt.target.value))} />
             </label>
             <br />
             <label>
                 Image Description:
-                <input class="textbox" type="text" id="imageDescription" name="imageDescription" {...bindImageDescription} />
+                <input class="textbox" type="text" id="imageDescription" name="imageDescription" value={imageDescription} onChange={((evt) => setImageDescription(evt.target.value))} />
             </label>
             <br />
             <label>
                 Image URL:
-                <input class="textbox" type="text" id="imageURL" name="imageURL" {...bindImageURL} />
+                <input class="textbox" type="text" id="imageURL" name="imageURL" value={imageURL} onChange={((evt) => setImageURL(evt.target.value))} />
             </label>
             <br />
-            <input class="button" type="button" value="Add Photo" />
-            <input class="button" type="submit" value="Clear Fields" />
+            <input class="button" type="button" value="Add Photo" onClick={(() => createCard(imageName, imageDescription, imageURL))} />
+            <input class="button" type="button" value="Clear Fields" onClick={clearFields} />
         </form>
     );
 }
