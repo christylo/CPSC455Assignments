@@ -16,6 +16,10 @@ export default function Home() {
 
     const [cards, setCards] = useState(preloadedCards);
 
+    function deleteAllCards() {
+        setCards([]);
+    }
+
     return (
         <div class="container">
             <div class="intro">
@@ -35,7 +39,7 @@ export default function Home() {
                         <h2 class="heading">Polaroids</h2>
                     </div>
                     <div id="DeleteAllCardsButton">
-                        <button id="DeleteAllButton" class="button" onClick="deleteAll()">Delete All Polaroids</button>
+                        <button id="DeleteAllButton" class="button" onClick={deleteAllCards}>Delete All Polaroids</button>
                     </div>
                 </div>
                 <div id="picture-container" class="highlights-grid">
