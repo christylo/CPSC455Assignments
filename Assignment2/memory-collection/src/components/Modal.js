@@ -9,6 +9,8 @@ export default function Modal(props) {
         props.setCards(removed);
     }
 
+    const dateTime = new Date();
+
     return (
         <div class="modal-body">
             <div class="modal" id="modal">
@@ -17,6 +19,7 @@ export default function Modal(props) {
                     <img class="card-image-modal" src={props.url} alt="image"></img>
                     <div id="ModalDescription">
                         {props.description}
+                        <div>Polaroid added on: {dateTime.toLocaleTimeString()}</div>
                     </div>
                 </div>
                 <br />
