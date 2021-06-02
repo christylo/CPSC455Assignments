@@ -1,11 +1,23 @@
-export default function Modal({ id, images, setCards, name, url, description, cardAddedTime, setVisibility }) {
+import { useState } from "react";
+
+export default function Modal({ id, images, setCards, name, url, description, setVisibility, time, numCardsAdded }) {
+
+    const [timesDeleted, setTimesDeleted] = useState(0);
 
     function deleteCurrentCard() {
-        const currID = id;
+        let currID;
+        if (timesDeleted === 0) {
+            currID = id;
+        } else {
+            console.log(numCardsAdded)
+            currID = id - timesDeleted + numCardsAdded;
+        }
+        setTimesDeleted(timesDeleted + 1);
         let array = images;
         let removed = array.filter((value, index, arr) => {
             return index !== currID;
         });
+        console.log(removed)
         setCards(removed);
     }
 
@@ -17,7 +29,7 @@ export default function Modal({ id, images, setCards, name, url, description, ca
                     <img class="card-image-modal" src={url} alt="image"></img>
                     <div id="ModalDescription">
                         {description}
-                        <div>Polaroid added on: {cardAddedTime}</div>
+                        {time && <div>Polaroid added on: {time}</div>}
                     </div>
                 </div>
                 <br />

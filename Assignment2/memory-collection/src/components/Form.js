@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import '../style/style.css';
 
-export default function Form({ cards, setCards, setCardAddedTime, deleteAllState }) {
+export default function Form({ cards, setCards, deleteAllState, setDeleteAllState, setNumCardsAdded, numCardsAdded }) {
 
     const [imageName, setImageName] = useState("");
     const [imageDescription, setImageDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
     const [imageID, setImageID] = useState(cards.length);
-    const [addedNewCard, setAddedNewCard] = useState(false);
     const dateTime = new Date();
 
     function clearFields() {
@@ -19,27 +18,24 @@ export default function Form({ cards, setCards, setCardAddedTime, deleteAllState
     function createCard(name, description, url) {
         setImageID(imageID + 1);
         const id = imageID;
+        const time = dateTime.toLocaleTimeString();
         const newCard = {
             name,
             url,
             description,
-            id
+            id,
+            time
         }
 
         const newCards = [...cards, newCard];
-        setAddedNewCard(true);
         setCards(newCards);
-    }
-
-    if (deleteAllState) {
-        setImageID(0);
+        setNumCardsAdded(numCardsAdded + 1);
     }
 
     useEffect(() => {
-        setCardAddedTime(dateTime.toLocaleTimeString());
-        setAddedNewCard(false);
-    }, [addedNewCard]);
-
+        setDeleteAllState(false);
+        setImageID(0);
+    }, [deleteAllState]);
 
     return (
         <form>

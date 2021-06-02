@@ -8,7 +8,6 @@ import picnic from "../images/picnic.JPG";
 import water from "../images/water.JPG";
 
 export default function Home() {
-
     const preloadedCards = [{ name: "Pupper", url: puppy, description: "I want this doggo", id: 0 },
     { name: "Disney", url: disney, description: "Disney California Adventure Park", id: 1 },
     { name: "Picnic", url: picnic, description: "spring picnic in SF", id: 2 },
@@ -16,7 +15,7 @@ export default function Home() {
 
     const [cards, setCards] = useState(preloadedCards);
     const [deleteAllState, setDeleteAllState] = useState(false);
-    const [cardAddedTime, setCardAddedTime] = useState(new Date());
+    const [numCardsAdded, setNumCardsAdded] = useState(0);
 
     function deleteAllCards() {
         setCards([]);
@@ -34,7 +33,7 @@ export default function Home() {
                 <hr></hr>
                 <h2 class="heading">Add Polaroid</h2>
                 <div id="AddCard">
-                    <Form cards={cards} setCards={setCards} deleteAllState={deleteAllState} setCardAddedTime={setCardAddedTime} ></Form>
+                    <Form cards={cards} setCards={setCards} deleteAllState={deleteAllState} setDeleteAllState={setDeleteAllState} setNumCardsAdded={setNumCardsAdded} numCardsAdded={numCardsAdded}></Form>
                 </div>
                 <hr></hr>
                 <div class="flex-container">
@@ -46,9 +45,9 @@ export default function Home() {
                     </div>
                 </div>
                 <div id="picture-container" class="highlights-grid">
-                    <Cards images={cards} setCards={setCards} cardAddedTime={cardAddedTime} />
+                    <Cards images={cards} setCards={setCards} numCardsAdded={numCardsAdded} />
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Modal from "./Modal";
 
-export default function Polaroid({ url, name, description, id, images, setCards, cardAddedTime }) {
+export default function Polaroid({ url, name, description, id, time, images, setCards, numCardsAdded }) {
 
     const [visibility, setVisibility] = useState(false);
 
@@ -14,7 +14,7 @@ export default function Polaroid({ url, name, description, id, images, setCards,
                     <p>{description}</p>
                 </div>
             </div>
-            {visibility && <Modal setVisibility={setVisibility} name={name} description={description} url={url} id={id} images={images} setCards={setCards} cardAddedTime={cardAddedTime} />}
+            {visibility && <Modal setVisibility={setVisibility} name={name} description={description} url={url} id={id} images={images} setCards={setCards} time={time} numCardsAdded={numCardsAdded} />}
         </div>
     );
 }
