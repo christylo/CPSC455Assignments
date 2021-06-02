@@ -9,10 +9,10 @@ import water from "../images/water.JPG";
 
 export default function Home() {
 
-    const preloadedCards = [{ name: "Pupper", url: puppy, description: "I want this doggo" },
-    { name: "Disney", url: disney, description: "Disney California Adventure Park" },
-    { name: "Picnic", url: picnic, description: "spring picnic in SF" },
-    { name: "Beach Day", url: water, description: "summer beach day with friends" }]
+    const preloadedCards = [{ name: "Pupper", url: puppy, description: "I want this doggo", id: 0 },
+    { name: "Disney", url: disney, description: "Disney California Adventure Park", id: 1 },
+    { name: "Picnic", url: picnic, description: "spring picnic in SF", id: 2 },
+    { name: "Beach Day", url: water, description: "summer beach day with friends", id: 3 }]
 
     const [cards, setCards] = useState(preloadedCards);
 
@@ -43,7 +43,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div id="picture-container" class="highlights-grid">
-                    <Cards images={cards} />
+                    <Cards images={cards} setCards={setCards} />
                 </div>
             </div>
         </div>

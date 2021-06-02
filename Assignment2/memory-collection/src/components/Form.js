@@ -6,22 +6,26 @@ export default function Form(props) {
     const [imageName, setImageName] = useState("");
     const [imageDescription, setImageDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
+    const [imageID, setImageID] = useState(4);
 
     function clearFields() {
         setImageName("");
         setImageDescription("");
         setImageURL("");
+        setImageURL(4);
     }
 
     function createCard(name, description, url) {
+        setImageID(imageID + 1);
+        const id = imageID;
         const newCard = {
             name,
             url,
-            description
+            description,
+            id
         }
 
         const newCards = [...props.cards, newCard];
-        console.log(newCards);
         props.setCards(newCards);
     }
 

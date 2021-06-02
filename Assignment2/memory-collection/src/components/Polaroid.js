@@ -14,11 +14,7 @@ export default function Polaroid(props) {
                     <p>{props.description}</p>
                 </div>
             </div>
-            {visibility && <Modal setVisibility={setVisibility} name={props.name} description={props.description} url={props.url} />}
+            {visibility && <Modal setVisibility={setVisibility} name={props.name} description={props.description} url={props.url} id={props.id} images={props.images} setCards={props.setCards} />}
         </div>
     );
 }
-
-// useState visibility default to false
-// when clicking polaroid set visibility to true
-// have an exit button on the dialog -> when clicked set visibility to false
