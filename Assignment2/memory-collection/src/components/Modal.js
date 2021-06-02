@@ -1,13 +1,19 @@
 export default function Modal(props) {
 
     return (
-        <div>
+        <div class="modal-body">
             <div class="modal" id="modal">
-                <h2>Modal Window</h2>
-                <div class="content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis deserunt corrupti, ut fugit magni qui quasi nisi amet repellendus non fuga omnis a sed impedit explicabo accusantium nihil doloremque consequuntur.</div>
+                <h1 id="ModalHeading">{props.name}</h1>
+                <div class="content">
+                    <img class="card-image-modal" src={props.url} alt="image"></img>
+                    <div id="ModalDescription">
+                        {props.description}
+                    </div>
+                </div>
                 <br />
                 <div class="actions">
-                    <button class="toggle-button" onClick={(() => props.setVisibility(false))}>Close</button>
+                    <button class="toggle-button" onClick={(() => props.setVisibility(false))}>❌ Close</button>
+                    <button id="DeleteCardButton" class="toggle-button" >🗑️ Delete</button>
                 </div>
             </div>
         </div>

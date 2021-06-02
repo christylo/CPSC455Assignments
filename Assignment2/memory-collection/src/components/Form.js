@@ -27,21 +27,24 @@ export default function Form(props) {
 
     return (
         <form>
-            <label>
-                Image Name:
+            <div class="label-spacing">
+                <label>
+                    Image Name:
                 <input class="textbox" id="imageName" name="imageName" type="text" value={imageName} onChange={((evt) => setImageName(evt.target.value))} />
-            </label>
-            <br />
-            <label>
-                Image Description:
+                </label>
+            </div>
+            <div class="label-spacing">
+                <label class="label-spacing">
+                    Image Description:
                 <input class="textbox" type="text" id="imageDescription" name="imageDescription" value={imageDescription} onChange={((evt) => setImageDescription(evt.target.value))} />
-            </label>
-            <br />
-            <label>
-                Image URL:
+                </label>
+            </div>
+            <div class="label-spacing">
+                <label class="label-spacing">
+                    Image URL:
                 <input class="textbox" type="text" id="imageURL" name="imageURL" value={imageURL} onChange={((evt) => setImageURL(evt.target.value))} />
-            </label>
-            <br />
+                </label>
+            </div>
             <input class="button" type="button" value="Add Photo" onClick={(() => createCard(imageName, imageDescription, imageURL))} />
             <input class="button" type="button" value="Clear Fields" onClick={clearFields} />
         </form>

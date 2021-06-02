@@ -82,6 +82,7 @@ nav {
     background-color: #e2f8ec;
     font-family: 'Noto Sans', sans-serif;
     color: #333333;
+    padding: 3rem;
   }
   
   h1,
@@ -138,7 +139,7 @@ nav {
   /* highlights section */
   .heading {
     margin-top: 24px;
-    text-align: left;
+    text-align: center;
   }
   
   .highlights-grid {
@@ -175,7 +176,8 @@ nav {
   }  
   
   .flex-child:first-child {
-    margin-right: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
   } 
   
   .textbox {
@@ -237,6 +239,10 @@ nav {
   .card:hover {
     box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
   }
+
+  .card-display {
+    justify-self: center;
+  }
   
   /* Add some padding inside the card container */
   .text-container {
@@ -251,10 +257,15 @@ nav {
 
   /* Modal component */
   .modal-body {
-    background: #eee;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 
   .modal {
@@ -270,7 +281,9 @@ nav {
 }
 
 .modal .content {
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
 }
 .modal .actions {
     border-top: 1px solid #ccc;
@@ -284,9 +297,42 @@ nav {
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
     line-height: 1;
+    margin-right: 10px;
+    margin-left: 10px;
 }
+
+#DeleteCardButton {
+    border: 0;
+    background: #f78467;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    line-height: 1;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
 #centered-toggle-button {
     position: absolute;
 }
 
+.card-image-modal {
+    height: 500px;
+    width: 100%;
+  }
   
+#ModalHeading {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: xx-large;
+}
+
+#ModalDescription {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: large;
+    padding-top: 1rem;
+}
+
+/* Form section */
+.label-spacing {
+    margin-bottom: 1rem;
+}
