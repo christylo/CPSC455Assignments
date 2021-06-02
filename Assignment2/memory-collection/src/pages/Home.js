@@ -15,9 +15,12 @@ export default function Home() {
     { name: "Beach Day", url: water, description: "summer beach day with friends", id: 3 }]
 
     const [cards, setCards] = useState(preloadedCards);
+    const [deleteAllState, setDeleteAllState] = useState(false);
+    const [cardAddedTime, setCardAddedTime] = useState(new Date());
 
     function deleteAllCards() {
         setCards([]);
+        setDeleteAllState(true);
     }
 
     return (
@@ -31,7 +34,7 @@ export default function Home() {
                 <hr></hr>
                 <h2 class="heading">Add Polaroid</h2>
                 <div id="AddCard">
-                    <Form cards={cards} setCards={setCards}></Form>
+                    <Form cards={cards} setCards={setCards} deleteAllState={deleteAllState} setCardAddedTime={setCardAddedTime} ></Form>
                 </div>
                 <hr></hr>
                 <div class="flex-container">
@@ -43,7 +46,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div id="picture-container" class="highlights-grid">
-                    <Cards images={cards} setCards={setCards} />
+                    <Cards images={cards} setCards={setCards} cardAddedTime={cardAddedTime} />
                 </div>
             </div>
         </div>

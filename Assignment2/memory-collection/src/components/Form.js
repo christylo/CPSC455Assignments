@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import '../style/style.css';
 
-export default function Form(props) {
+export default function Form({ cards, setCards, setCardAddedTime, deleteAllState }) {
 
     const [imageName, setImageName] = useState("");
     const [imageDescription, setImageDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
-    const [imageID, setImageID] = useState(4);
+    const [imageID, setImageID] = useState(cards.length);
+    const [addedNewCard, setAddedNewCard] = useState(false);
+    const dateTime = new Date();
 
     function clearFields() {
         setImageName("");
         setImageDescription("");
         setImageURL("");
-        setImageURL(4);
     }
 
     function createCard(name, description, url) {
@@ -25,9 +26,20 @@ export default function Form(props) {
             id
         }
 
-        const newCards = [...props.cards, newCard];
-        props.setCards(newCards);
+        const newCards = [...cards, newCard];
+        setAddedNewCard(true);
+        setCards(newCards);
     }
+
+    if (deleteAllState) {
+        setImageID(0);
+    }
+
+    useEffect(() => {
+        setCardAddedTime(dateTime.toLocaleTimeString());
+        setAddedNewCard(false);
+    }, [addedNewCard]);
+
 
     return (
         <form>
