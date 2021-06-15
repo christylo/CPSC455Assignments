@@ -26,8 +26,8 @@ export default function App() {
 
   return (
     <div>
-      <p className="App-intro">;{apiResponse}</p>
-      {/* <Router>
+      <p className="App-intro">{apiResponse}</p>
+      <Router>
         <div>
           <nav>
             <li class="navbar">
@@ -46,7 +46,7 @@ export default function App() {
             </Route>
           </Switch>
         </div>
-      </Router> */}
+      </Router>
     </div>
   );
 }
