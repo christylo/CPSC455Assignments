@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Form from "../components/Form";
 import daisyLogo from '../images/daisy.png';
 import Cards from "../components/Cards";
@@ -8,15 +8,22 @@ import picnic from "../images/picnic.JPG";
 import water from "../images/water.JPG";
 
 export default function Home() {
-    const preloadedCards = [{ name: "Pupper", url: puppy, description: "I want this doggo", id: 0 },
-    { name: "Disney", url: disney, description: "Disney California Adventure Park", id: 1 },
-    { name: "Picnic", url: picnic, description: "spring picnic in SF", id: 2 },
-    { name: "Beach Day", url: water, description: "summer beach day with friends", id: 3 }]
 
-    const [cards, setCards] = useState(preloadedCards);
+    const [cards, setCards] = useState([]);
     const [deleteAllState, setDeleteAllState] = useState(false);
     const [numCardsAdded, setNumCardsAdded] = useState(0);
 
+    function callGetAllCardsAPI() {
+      return fetch("http://localhost:9000/api/cards")
+          .then(res => res.text())
+          .then(res => JSON.parse(res))
+          .then(setCards);
+    }
+
+    useEffect(() => {
+      callGetAllCardsAPI();
+    }, []);
+  
     function deleteAllCards() {
         setCards([]);
         setDeleteAllState(true);
