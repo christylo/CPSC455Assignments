@@ -1,36 +1,29 @@
 import { useEffect, useState } from "react";
 import '../style/style.css';
 
-export default function Form({ cards, setCards, deleteAllState, setDeleteAllState, setNumCardsAdded, numCardsAdded }) {
+export default function Form({ deleteAllState, setDeleteAllState, callGetAllCardsAPI }) {
 
-    const [imageName, setImageName] = useState("");
-    const [imageDescription, setImageDescription] = useState("");
-    const [imageURL, setImageURL] = useState("");
-    const [imageID, setImageID] = useState(cards.length);
+    const [imageName, setImageName] = useState("Cat");
+    const [imageDescription, setImageDescription] = useState("test");
+    const [imageURL, setImageURL] = useState("https://timesofindia.indiatimes.com/photo/67586673.cms");
     const dateTime = new Date();
 
-    function callCreateCardAPI() {
+    function callCreateCardAPI(name, description, url) {
+        const time = dateTime.toLocaleTimeString();
+        const newCard = {
+            name,
+            url,
+            description,
+            time
+        }
         const requestOptions = {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(cards)
+            body: JSON.stringify(newCard)
         };
         fetch("http://localhost:9000/api/card/create", requestOptions)
-            .then(response => response.json());
+            .then(_ => callGetAllCardsAPI());
     }
-
-    // useEffect(() => {
-    //     // POST request using fetch inside useEffect React hook
-    //     const requestOptions = {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(cards)
-    //     };
-    //     fetch("http://localhost:9000/api/card/create", requestOptions)
-    //         .then(response => response.json())
-    //         .then(data => setPostId(data.id));
-    
-    // }, []);
 
     function clearFields() {
         setImageName("");
@@ -38,31 +31,12 @@ export default function Form({ cards, setCards, deleteAllState, setDeleteAllStat
         setImageURL("");
     }
 
-    function createCard(name, description, url) {
-        setImageID(imageID + 1);
-        const id = imageID;
-        const time = dateTime.toLocaleTimeString();
-        const newCard = {
-            name,
-            url,
-            description,
-            id,
-            time
-        }
-
-        const newCards = [...cards, newCard];
-        setCards(newCards);
-        setNumCardsAdded(numCardsAdded + 1);
-    }
-
     function addCard() {
-        createCard(imageName, imageDescription, imageURL);
-        callCreateCardAPI();
+        callCreateCardAPI(imageName, imageDescription, imageURL);
     }
 
     useEffect(() => {
         setDeleteAllState(false);
-        setImageID(0);
     }, [deleteAllState]);
 
     return (

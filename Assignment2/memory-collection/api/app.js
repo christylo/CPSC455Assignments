@@ -80,6 +80,7 @@ app.post('/api/card/create', (req, res) => {
     cardId: curId
   }
   curId++;
+  state.push(newCard);
   res.send(newCard);
 })
 

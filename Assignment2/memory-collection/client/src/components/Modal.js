@@ -4,21 +4,26 @@ export default function Modal({ id, images, setCards, name, url, description, se
 
     const [timesDeleted, setTimesDeleted] = useState(0);
 
+    // function callDeleteCardAPI() {
+    //     fetch('http://localhost:9000/api/card/delete/:cardId', { method: 'DELETE' })
+    //     .then(() => setStatus('Delete successful'));
+    // }
+
     function deleteCurrentCard() {
-        let currID;
-        if (timesDeleted === 0) {
-            currID = id;
-        } else {
-            console.log(numCardsAdded)
-            currID = id - timesDeleted + numCardsAdded;
-        }
+        let currID = 
+        // if (timesDeleted === 0) {
+        //     currID = id;
+        // } else {
+        //     console.log(numCardsAdded)
+        //     currID = id - timesDeleted + numCardsAdded;
+        // }
         setTimesDeleted(timesDeleted + 1);
         let array = images;
         let removed = array.filter((value, index, arr) => {
             return index !== currID;
         });
         console.log(removed)
-        setCards(removed);
+        setCards(removed); 
     }
 
     return (

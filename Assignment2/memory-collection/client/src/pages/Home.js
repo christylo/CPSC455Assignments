@@ -2,10 +2,6 @@ import { useState, useEffect } from "react";
 import Form from "../components/Form";
 import daisyLogo from '../images/daisy.png';
 import Cards from "../components/Cards";
-import puppy from "../images/pupper.jpeg";
-import disney from "../images/disney.JPG";
-import picnic from "../images/picnic.JPG";
-import water from "../images/water.JPG";
 
 export default function Home() {
 
@@ -40,7 +36,7 @@ export default function Home() {
                 <hr></hr>
                 <h2 class="heading">Add Polaroid</h2>
                 <div id="AddCard">
-                    <Form cards={cards} setCards={setCards} deleteAllState={deleteAllState} setDeleteAllState={setDeleteAllState} setNumCardsAdded={setNumCardsAdded} numCardsAdded={numCardsAdded}></Form>
+                    <Form deleteAllState={deleteAllState} setDeleteAllState={setDeleteAllState} callGetAllCardsAPI={callGetAllCardsAPI}></Form>
                 </div>
                 <hr></hr>
                 <div class="flex-container">
@@ -52,7 +48,7 @@ export default function Home() {
                     </div>
                 </div>
                 <div id="picture-container" class="highlights-grid">
-                    <Cards images={cards} setCards={setCards} numCardsAdded={numCardsAdded} />
+                    <Cards images={cards} setCards={setCards} numCardsAdded={numCardsAdded} callGetAllCardsAPI={callGetAllCardsAPI} />
                 </div>
             </div>
         </div >
