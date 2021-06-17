@@ -9,6 +9,29 @@ export default function Form({ cards, setCards, deleteAllState, setDeleteAllStat
     const [imageID, setImageID] = useState(cards.length);
     const dateTime = new Date();
 
+    function callCreateCardAPI() {
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(cards)
+        };
+        fetch("http://localhost:9000/api/card/create", requestOptions)
+            .then(response => response.json());
+    }
+
+    // useEffect(() => {
+    //     // POST request using fetch inside useEffect React hook
+    //     const requestOptions = {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify(cards)
+    //     };
+    //     fetch("http://localhost:9000/api/card/create", requestOptions)
+    //         .then(response => response.json())
+    //         .then(data => setPostId(data.id));
+    
+    // }, []);
+
     function clearFields() {
         setImageName("");
         setImageDescription("");
@@ -30,6 +53,11 @@ export default function Form({ cards, setCards, deleteAllState, setDeleteAllStat
         const newCards = [...cards, newCard];
         setCards(newCards);
         setNumCardsAdded(numCardsAdded + 1);
+    }
+
+    function addCard() {
+        createCard(imageName, imageDescription, imageURL);
+        callCreateCardAPI();
     }
 
     useEffect(() => {
@@ -57,7 +85,7 @@ export default function Form({ cards, setCards, deleteAllState, setDeleteAllStat
                 <input class="textbox" type="text" id="imageURL" name="imageURL" value={imageURL} onChange={((evt) => setImageURL(evt.target.value))} />
                 </label>
             </div>
-            <input class="button" type="button" value="Add Photo" onClick={(() => createCard(imageName, imageDescription, imageURL))} />
+            <input class="button" type="button" value="Add Photo" onClick={addCard} />
             <input class="button" type="button" value="Clear Fields" onClick={clearFields} />
         </form>
     );
