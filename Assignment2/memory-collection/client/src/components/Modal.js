@@ -1,29 +1,9 @@
-import { useState } from "react";
+export default function Modal({ cardId, name, url, description, setVisibility, time, callGetAllCardsAPI }) {
 
-export default function Modal({ id, images, setCards, name, url, description, setVisibility, time, numCardsAdded }) {
-
-    const [timesDeleted, setTimesDeleted] = useState(0);
-
-    // function callDeleteCardAPI() {
-    //     fetch('http://localhost:9000/api/card/delete/:cardId', { method: 'DELETE' })
-    //     .then(() => setStatus('Delete successful'));
-    // }
-
-    function deleteCurrentCard() {
-        let currID = 
-        // if (timesDeleted === 0) {
-        //     currID = id;
-        // } else {
-        //     console.log(numCardsAdded)
-        //     currID = id - timesDeleted + numCardsAdded;
-        // }
-        setTimesDeleted(timesDeleted + 1);
-        let array = images;
-        let removed = array.filter((value, index, arr) => {
-            return index !== currID;
-        });
-        console.log(removed)
-        setCards(removed); 
+    function callDeleteCardAPI() {
+        const url = "http://localhost:9000/api/card/delete/" + cardId;
+        fetch(url, { method: 'DELETE' })
+        .then(_ => callGetAllCardsAPI());
     }
 
     return (
@@ -40,9 +20,11 @@ export default function Modal({ id, images, setCards, name, url, description, se
                 <br />
                 <div class="actions">
                     <button class="toggle-button" onClick={(() => setVisibility(false))}>❌ Close</button>
-                    <button id="DeleteCardButton" class="toggle-button" onClick={deleteCurrentCard}>🗑️ Delete</button>
+                    <button id="DeleteCardButton" class="toggle-button" onClick={callDeleteCardAPI}>🗑️ Delete</button>
                 </div>
             </div>
         </div>
     );
 }
+
+// 

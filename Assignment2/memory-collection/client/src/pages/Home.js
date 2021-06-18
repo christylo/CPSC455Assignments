@@ -6,7 +6,6 @@ import Cards from "../components/Cards";
 export default function Home() {
 
     const [cards, setCards] = useState([]);
-    const [deleteAllState, setDeleteAllState] = useState(false);
     const [numCardsAdded, setNumCardsAdded] = useState(0);
 
     function callGetAllCardsAPI() {
@@ -22,7 +21,6 @@ export default function Home() {
   
     function deleteAllCards() {
         setCards([]);
-        setDeleteAllState(true);
     }
 
     return (
@@ -36,7 +34,7 @@ export default function Home() {
                 <hr></hr>
                 <h2 class="heading">Add Polaroid</h2>
                 <div id="AddCard">
-                    <Form deleteAllState={deleteAllState} setDeleteAllState={setDeleteAllState} callGetAllCardsAPI={callGetAllCardsAPI}></Form>
+                    <Form callGetAllCardsAPI={callGetAllCardsAPI}></Form>
                 </div>
                 <hr></hr>
                 <div class="flex-container">

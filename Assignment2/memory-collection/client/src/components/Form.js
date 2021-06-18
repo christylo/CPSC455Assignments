@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import '../style/style.css';
 
-export default function Form({ deleteAllState, setDeleteAllState, callGetAllCardsAPI }) {
+export default function Form({ callGetAllCardsAPI }) {
 
     const [imageName, setImageName] = useState("Cat");
     const [imageDescription, setImageDescription] = useState("test");
@@ -31,14 +31,6 @@ export default function Form({ deleteAllState, setDeleteAllState, callGetAllCard
         setImageURL("");
     }
 
-    function addCard() {
-        callCreateCardAPI(imageName, imageDescription, imageURL);
-    }
-
-    useEffect(() => {
-        setDeleteAllState(false);
-    }, [deleteAllState]);
-
     return (
         <form>
             <div class="label-spacing">
@@ -59,7 +51,8 @@ export default function Form({ deleteAllState, setDeleteAllState, callGetAllCard
                 <input class="textbox" type="text" id="imageURL" name="imageURL" value={imageURL} onChange={((evt) => setImageURL(evt.target.value))} />
                 </label>
             </div>
-            <input class="button" type="button" value="Add Photo" onClick={addCard} />
+            <input class="button" type="button" value="Add Photo" onClick={() => callCreateCardAPI(imageName, imageDescription, imageURL)} 
+            />
             <input class="button" type="button" value="Clear Fields" onClick={clearFields} />
         </form>
     );
