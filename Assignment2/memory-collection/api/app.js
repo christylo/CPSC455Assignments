@@ -85,15 +85,21 @@ app.post('/api/card/create', (req, res) => {
 })
 
 app.put('/api/card/update/:cardId', (req, res) => {
-  const newCard = req.body;
   const id = req.params.cardId;
+  const newCard = {
+    ...req.body,
+    cardId: id
+  }
   state.forEach(card => {
-    if (card.cardId === id) {
+    if (card.cardId == id) {
+      console.log("found card")
       card = newCard;
       res.sendStatus(200);
+    } else {
+      console.log("didn't find card")
+      res.sendStatus(404);
     }
   })
-  res.sendStatus(404);
 })
 
 app.delete('/api/card/delete/:cardId', (req, res) => {
@@ -107,4 +113,9 @@ app.delete('/api/card/delete/:cardId', (req, res) => {
   } else {
     res.sendStatus(404);
   }
+})
+
+app.delete('/api/cards/delete', (req, res) => {
+  state = [];
+  res.sendStatus(200);
 })
