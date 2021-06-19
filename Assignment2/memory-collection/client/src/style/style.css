@@ -280,6 +280,11 @@ nav {
     visibility: visible;
 }
 
+#EditModal {
+  width: 300px;
+  padding: 10px;
+}
+
 .modal .content {
     padding-left: 1rem;
     padding-right: 1rem;
@@ -302,14 +307,11 @@ nav {
 }
 
 #DeleteCardButton {
-    border: 0;
     background: #f78467;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    line-height: 1;
-    margin-right: 10px;
-    margin-left: 10px;
+}
+
+#EditCardButton {
+  background: #e9d479;
 }
 
 #centered-toggle-button {

@@ -15,12 +15,18 @@ export default function Home() {
           .then(setCards);
     }
 
+    function callDeleteAllCardsAPI() {
+      const url = "http://localhost:9000/api/cards/delete";
+      fetch(url, { method: 'DELETE' })
+        .then(_ => callGetAllCardsAPI());
+    }
+
     useEffect(() => {
       callGetAllCardsAPI();
     }, []);
   
     function deleteAllCards() {
-        setCards([]);
+        callDeleteAllCardsAPI();
     }
 
     return (
@@ -42,7 +48,7 @@ export default function Home() {
                         <h2 class="heading">Polaroids</h2>
                     </div>
                     <div id="DeleteAllCardsButton">
-                        <button id="DeleteAllButton" class="button" onClick={deleteAllCards}>Delete All Polaroids</button>
+                        <button id="DeleteAllButton" class="button" onClick={() => deleteAllCards()}>Delete All Polaroids</button>
                     </div>
                 </div>
                 <div id="picture-container" class="highlights-grid">

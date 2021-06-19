@@ -3,9 +3,9 @@ import '../style/style.css';
 
 export default function Form({ callGetAllCardsAPI }) {
 
-    const [imageName, setImageName] = useState("Cat");
-    const [imageDescription, setImageDescription] = useState("test");
-    const [imageURL, setImageURL] = useState("https://timesofindia.indiatimes.com/photo/67586673.cms");
+    const [imageName, setImageName] = useState("");
+    const [imageDescription, setImageDescription] = useState("");
+    const [imageURL, setImageURL] = useState("");
     const dateTime = new Date();
 
     function callCreateCardAPI(name, description, url) {
@@ -51,8 +51,7 @@ export default function Form({ callGetAllCardsAPI }) {
                 <input class="textbox" type="text" id="imageURL" name="imageURL" value={imageURL} onChange={((evt) => setImageURL(evt.target.value))} />
                 </label>
             </div>
-            <input class="button" type="button" value="Add Photo" onClick={() => callCreateCardAPI(imageName, imageDescription, imageURL)} 
-            />
+            <input class="button" type="button" value="Add Photo" onClick={() => callCreateCardAPI(imageName, imageDescription, imageURL)} />
             <input class="button" type="button" value="Clear Fields" onClick={clearFields} />
         </form>
     );

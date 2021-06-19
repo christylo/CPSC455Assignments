@@ -28,11 +28,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/testAPI", testAPIRouter);
 
-// catch 404 and forward to error handler
-// app.use(function(req, res, next) {
-  // next(createError(404));
-// });
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -85,21 +80,18 @@ app.post('/api/card/create', (req, res) => {
 })
 
 app.put('/api/card/update/:cardId', (req, res) => {
-  const id = req.params.cardId;
+  const id = JSON.parse(req.params.cardId);
   const newCard = {
     ...req.body,
     cardId: id
   }
-  state.forEach(card => {
-    if (card.cardId == id) {
-      console.log("found card")
-      card = newCard;
+  for (let i = 0; i < state.length; i++) {
+    if (state[i].cardId == id) {
+      state[i] = newCard;
       res.sendStatus(200);
-    } else {
-      console.log("didn't find card")
-      res.sendStatus(404);
     }
-  })
+  }
+  res.sendStatus(404);
 })
 
 app.delete('/api/card/delete/:cardId', (req, res) => {
