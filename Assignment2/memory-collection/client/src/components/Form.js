@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import '../style/style.css';
 
 export default function Form({ callGetAllCardsAPI }) {

@@ -8,25 +8,11 @@ import {
 import Home from './pages/Home';
 import About from './pages/About';
 import './style/style.css';
-import { useState, useEffect } from 'react';
 
 export default function App() {
 
-  const [apiResponse, setApiResponse] = useState("");
-
-  function callAPI() {
-    fetch("http://localhost:9000/testAPI")
-        .then(res => res.text())
-        .then(res => setApiResponse(res));
-  }
-
-  useEffect(() => {
-    callAPI();
-  }, []);
-
   return (
     <div>
-      <p className="App-intro">{apiResponse}</p>
       <Router>
         <div>
           <nav>
