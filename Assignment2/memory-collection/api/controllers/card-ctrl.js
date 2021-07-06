@@ -1,18 +1,12 @@
 const Card = require('../models/card-model')
 
 createCard = (req, res) => {
-    // return res.send(res)
     const body = req.body
-    // console.log(req, "req")
-    // console.log(res, "res")
 
     if (!body) {
         return res.status(400).json({
             success: false,
-            error: 'You must provide a card',
-            // keys: Object.keys(res),
-            // values: Object.values(res),
-            // // body,
+            error: 'You must provide a card'
         })
     }
 
