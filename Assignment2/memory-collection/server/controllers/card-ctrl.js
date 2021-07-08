@@ -88,6 +88,20 @@ deleteCard = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+deleteAllCards = async (req, res) => {
+    await Card.find({}, (err, cards) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!cards.length) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Card not found` })
+        }
+        return res.status(200).json({ success: true, data: [] })
+    }).catch(err => console.log(err))
+}
+
 getCardById = async (req, res) => {
     await Card.findOne({ _id: req.params.id }, (err, card) => {
         if (err) {
@@ -116,6 +130,7 @@ module.exports = {
     createCard,
     updateCard,
     deleteCard,
+    deleteAllCards,
     getCards,
     getCardById,
 }

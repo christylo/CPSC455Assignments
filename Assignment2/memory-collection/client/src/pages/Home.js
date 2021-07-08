@@ -2,23 +2,26 @@ import { useState, useEffect } from "react";
 import Form from "../components/Form";
 import daisyLogo from '../images/daisy.png';
 import Cards from "../components/Cards";
+import api from '../api'
 
 export default function Home() {
 
     const [cards, setCards] = useState([]);
     const [numCardsAdded, setNumCardsAdded] = useState(0);
 
-    function callGetAllCardsAPI() {
-      return fetch("http://localhost:9000/api/cards")
-          .then(res => res.text())
-          .then(res => JSON.parse(res))
-          .then(setCards);
+    async function callGetAllCardsAPI() {
+        const cards = await api.getAllCards();
+        console.log(cards, cards)
+        setCards(cards.data.data);
     }
 
-    function callDeleteAllCardsAPI() {
-      const url = "http://localhost:9000/api/cards/delete";
-      fetch(url, { method: 'DELETE' })
-        .then(_ => callGetAllCardsAPI());
+    async function callDeleteAllCardsAPI() {
+        // TODO: FIX THE API ON SERVER SIDE => not working rn
+        await api.deleteAllCards().then(cards => {
+            setCards({
+                cards: cards.data.data
+            })
+        })
     }
 
     useEffect(() => {

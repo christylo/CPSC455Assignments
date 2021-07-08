@@ -1,14 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EditModal from "./EditModal";
+import api from "../api";
 
-export default function Modal({ cardId, name, url, description, setVisibility, time, callGetAllCardsAPI }) {
+export default function Modal({ props, cardId, name, url, description, setVisibility, time, callGetAllCardsAPI }) {
 
     const [editVsibility, setEditVisibility] = useState(false);
 
-    function callDeleteCardAPI() {
-        const url = "http://localhost:9000/api/card/delete/" + cardId;
-        fetch(url, { method: 'DELETE' })
-        .then(_ => callGetAllCardsAPI());
+    // function callDeleteCardAPI() {
+    //     const url = "http://localhost:9000/api/card/delete/" + cardId;
+    //     fetch(url, { method: 'DELETE' })
+    //     .then(_ => callGetAllCardsAPI());
+    // }
+    async function callDeleteCardAPI() {
+        await api.deleteCardById(cardId).then(_ => callGetAllCardsAPI());
     }
 
     return (

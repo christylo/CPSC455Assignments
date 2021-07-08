@@ -6,7 +6,7 @@ const Card = new Schema(
         name: { type: String, required: true },
         url: { type: String, required: true },
         description: { type: String, required: true },
-        time: { type: Date, required: false },
+        time: { type: String, required: false },
     },
     { timestamps: true },
 )

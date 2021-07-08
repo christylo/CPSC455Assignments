@@ -1,5 +1,6 @@
 import { useState } from "react";
 import '../style/style.css';
+import api from '../api';
 
 export default function Form({ callGetAllCardsAPI }) {
 
@@ -8,7 +9,24 @@ export default function Form({ callGetAllCardsAPI }) {
     const [imageURL, setImageURL] = useState("");
     const dateTime = new Date();
 
-    function callCreateCardAPI(name, description, url) {
+    // function callCreateCardAPI(name, description, url) {
+    //     const time = dateTime.toLocaleTimeString();
+    //     const newCard = {
+    //         name,
+    //         url,
+    //         description,
+    //         time
+    //     }
+    //     const requestOptions = {
+    //         method: 'POST',
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify(newCard)
+    //     };
+    //     fetch("http://localhost:9000/api/card/create", requestOptions)
+    //         .then(_ => callGetAllCardsAPI());
+    // }
+
+    async function callCreateCardAPI(name, description, url) {
         const time = dateTime.toLocaleTimeString();
         const newCard = {
             name,
@@ -16,13 +34,11 @@ export default function Form({ callGetAllCardsAPI }) {
             description,
             time
         }
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newCard)
-        };
-        fetch("http://localhost:9000/api/card/create", requestOptions)
-            .then(_ => callGetAllCardsAPI());
+
+        await api.insertCard(newCard).then(res => {
+            window.alert(`Card inserted successfully`);
+            callGetAllCardsAPI();
+        })
     }
 
     function clearFields() {
