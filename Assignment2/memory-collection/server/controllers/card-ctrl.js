@@ -89,16 +89,16 @@ deleteCard = async (req, res) => {
 }
 
 deleteAllCards = async (req, res) => {
-    await Card.find({}, (err, cards) => {
+    await Card.deleteMany({}, (err, cards) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
         if (!cards.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Card not found` })
+                .json({ success: false, error: `Cards not found` })
         }
-        return res.status(200).json({ success: true, data: [] })
+        return res.status(200).json({ success: true, data: cards })
     }).catch(err => console.log(err))
 }
 

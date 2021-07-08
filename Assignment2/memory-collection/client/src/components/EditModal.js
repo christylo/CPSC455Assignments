@@ -7,28 +7,8 @@ export default function EditModal({props, name, url, description, cardId, callGe
     const [imageName, setImageName] = useState("");
     const [imageDescription, setImageDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
-    const dateTime = new Date();
-
-    // function callUpdateCardAPI(newName, newDescription, newUrl) {
-    //     const time = dateTime.toLocaleTimeString();
-    //     const newCard = {
-    //         name: newName,
-    //         url: newUrl,
-    //         description: newDescription,
-    //         time
-    //     };
-    //     const requestOptions = {
-    //         method: 'PUT',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(newCard)
-    //     };
-    //     const url = "http://localhost:9000/api/card/update/" + cardId;
-    //     fetch(url, requestOptions)
-    //     .then(_ => callGetAllCardsAPI());
-    // }
 
     async function callUpdateCardAPI(newName, newDescription, newUrl) {
-        // const time = dateTime.toLocaleTimeString();
         const time = moment(new Date()).format('MMMM Do YYYY, h:mm:ss a');
         const newCard = {
             name: newName,

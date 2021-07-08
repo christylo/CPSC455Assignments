@@ -1,33 +1,16 @@
 import { useState } from "react";
 import '../style/style.css';
 import api from '../api';
+import moment from "moment";
 
 export default function Form({ callGetAllCardsAPI }) {
 
     const [imageName, setImageName] = useState("");
     const [imageDescription, setImageDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
-    const dateTime = new Date();
-
-    // function callCreateCardAPI(name, description, url) {
-    //     const time = dateTime.toLocaleTimeString();
-    //     const newCard = {
-    //         name,
-    //         url,
-    //         description,
-    //         time
-    //     }
-    //     const requestOptions = {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify(newCard)
-    //     };
-    //     fetch("http://localhost:9000/api/card/create", requestOptions)
-    //         .then(_ => callGetAllCardsAPI());
-    // }
 
     async function callCreateCardAPI(name, description, url) {
-        const time = dateTime.toLocaleTimeString();
+        const time = moment(new Date()).format('MMMM Do YYYY, h:mm:ss a');
         const newCard = {
             name,
             url,

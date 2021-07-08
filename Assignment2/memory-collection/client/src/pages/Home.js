@@ -7,30 +7,23 @@ import api from '../api'
 export default function Home() {
 
     const [cards, setCards] = useState([]);
-    const [numCardsAdded, setNumCardsAdded] = useState(0);
 
     async function callGetAllCardsAPI() {
         const cards = await api.getAllCards();
-        console.log(cards, cards)
+        console.log(cards.data.data)
         setCards(cards.data.data);
     }
 
     async function callDeleteAllCardsAPI() {
-        // TODO: FIX THE API ON SERVER SIDE => not working rn
-        await api.deleteAllCards().then(cards => {
-            setCards({
-                cards: cards.data.data
-            })
+        await api.deleteAllCards().then(res => {
+            window.alert(`Cards deleted successfully`);
+            setCards(cards.data.data);
         })
     }
 
     useEffect(() => {
       callGetAllCardsAPI();
     }, []);
-  
-    function deleteAllCards() {
-        callDeleteAllCardsAPI();
-    }
 
     return (
         <div class="container">
@@ -51,11 +44,11 @@ export default function Home() {
                         <h2 class="heading">Polaroids</h2>
                     </div>
                     <div id="DeleteAllCardsButton">
-                        <button id="DeleteAllButton" class="button" onClick={() => deleteAllCards()}>Delete All Polaroids</button>
+                        <button id="DeleteAllButton" class="button" onClick={() => callDeleteAllCardsAPI()}>Delete All Polaroids</button>
                     </div>
                 </div>
                 <div id="picture-container" class="highlights-grid">
-                    <Cards images={cards} setCards={setCards} numCardsAdded={numCardsAdded} callGetAllCardsAPI={callGetAllCardsAPI} />
+                    <Cards images={cards} setCards={setCards} callGetAllCardsAPI={callGetAllCardsAPI} />
                 </div>
             </div>
         </div >
