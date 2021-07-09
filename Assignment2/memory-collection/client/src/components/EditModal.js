@@ -1,28 +1,25 @@
 import { useState } from "react";
+import moment from "moment";
+import api from '../api';
 
-export default function EditModal({name, url, description, cardId, callGetAllCardsAPI, setEditVisibility}) {
+export default function EditModal({props, name, url, description, cardId, callGetAllCardsAPI, setEditVisibility}) {
 
     const [imageName, setImageName] = useState("");
     const [imageDescription, setImageDescription] = useState("");
     const [imageURL, setImageURL] = useState("");
-    const dateTime = new Date();
 
-    function callUpdateCardAPI(newName, newDescription, newUrl) {
-        const time = dateTime.toLocaleTimeString();
+    async function callUpdateCardAPI(newName, newDescription, newUrl) {
+        const time = moment(new Date()).format('MMMM Do YYYY, h:mm:ss a');
         const newCard = {
             name: newName,
             url: newUrl,
             description: newDescription,
             time
         };
-        const requestOptions = {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newCard)
-        };
-        const url = "http://localhost:9000/api/card/update/" + cardId;
-        fetch(url, requestOptions)
-        .then(_ => callGetAllCardsAPI());
+        await api.updateCardById(cardId, newCard).then(res => {
+            window.alert(`Card updated successfully`);
+            callGetAllCardsAPI();
+        })
     }
 
     return (

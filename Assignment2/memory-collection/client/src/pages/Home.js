@@ -2,32 +2,31 @@ import { useState, useEffect } from "react";
 import Form from "../components/Form";
 import daisyLogo from '../images/daisy.png';
 import Cards from "../components/Cards";
+import api from '../api'
 
 export default function Home() {
 
     const [cards, setCards] = useState([]);
-    const [numCardsAdded, setNumCardsAdded] = useState(0);
 
-    function callGetAllCardsAPI() {
-      return fetch("http://localhost:9000/api/cards")
-          .then(res => res.text())
-          .then(res => JSON.parse(res))
-          .then(setCards);
+    async function callGetAllCardsAPI() {
+        const cards = await api.getAllCards();
+        if (cards && cards.data && cards.data.data) {
+            setCards(cards.data.data);
+        } else {
+            setCards([]);
+        }       
     }
 
-    function callDeleteAllCardsAPI() {
-      const url = "http://localhost:9000/api/cards/delete";
-      fetch(url, { method: 'DELETE' })
-        .then(_ => callGetAllCardsAPI());
+    async function callDeleteAllCardsAPI() {
+        await api.deleteAllCards().then(res => {
+            window.alert(`Cards deleted successfully`);
+            setCards([]);
+        })
     }
 
     useEffect(() => {
       callGetAllCardsAPI();
     }, []);
-  
-    function deleteAllCards() {
-        callDeleteAllCardsAPI();
-    }
 
     return (
         <div class="container">
@@ -48,11 +47,11 @@ export default function Home() {
                         <h2 class="heading">Polaroids</h2>
                     </div>
                     <div id="DeleteAllCardsButton">
-                        <button id="DeleteAllButton" class="button" onClick={() => deleteAllCards()}>Delete All Polaroids</button>
+                        <button id="DeleteAllButton" class="button" onClick={() => callDeleteAllCardsAPI()}>Delete All Polaroids</button>
                     </div>
                 </div>
                 <div id="picture-container" class="highlights-grid">
-                    <Cards images={cards} setCards={setCards} numCardsAdded={numCardsAdded} callGetAllCardsAPI={callGetAllCardsAPI} />
+                    <Cards images={cards} setCards={setCards} callGetAllCardsAPI={callGetAllCardsAPI} />
                 </div>
             </div>
         </div >

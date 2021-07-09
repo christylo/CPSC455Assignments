@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import EditModal from "./EditModal";
+import api from "../api";
 
 export default function Modal({ cardId, name, url, description, setVisibility, time, callGetAllCardsAPI }) {
 
     const [editVsibility, setEditVisibility] = useState(false);
 
-    function callDeleteCardAPI() {
-        const url = "http://localhost:9000/api/card/delete/" + cardId;
-        fetch(url, { method: 'DELETE' })
-        .then(_ => callGetAllCardsAPI());
+    async function callDeleteCardAPI() {
+        await api.deleteCardById(cardId).then(res => {
+            window.alert(`Card deleted successfully`);
+            callGetAllCardsAPI();
+        });
     }
 
     return (
@@ -16,7 +18,7 @@ export default function Modal({ cardId, name, url, description, setVisibility, t
             <div class="modal" id="modal">
                 <h1 id="ModalHeading">{name}</h1>
                 <div class="content">
-                    <img class="card-image-modal" src={url} alt="image"></img>
+                    <img class="card-image-modal" src={url} alt="card"/>
                     <div id="ModalDescription">
                         {description}
                         {time && <div>Polaroid added on: {time}</div>}
