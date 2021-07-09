@@ -7,7 +7,10 @@ export default function Modal({ cardId, name, url, description, setVisibility, t
     const [editVsibility, setEditVisibility] = useState(false);
 
     async function callDeleteCardAPI() {
-        await api.deleteCardById(cardId).then(_ => callGetAllCardsAPI());
+        await api.deleteCardById(cardId).then(res => {
+            window.alert(`Card deleted successfully`);
+            callGetAllCardsAPI();
+        });
     }
 
     return (
@@ -15,7 +18,7 @@ export default function Modal({ cardId, name, url, description, setVisibility, t
             <div class="modal" id="modal">
                 <h1 id="ModalHeading">{name}</h1>
                 <div class="content">
-                    <img class="card-image-modal" src={url} alt="image"></img>
+                    <img class="card-image-modal" src={url} alt="card"/>
                     <div id="ModalDescription">
                         {description}
                         {time && <div>Polaroid added on: {time}</div>}

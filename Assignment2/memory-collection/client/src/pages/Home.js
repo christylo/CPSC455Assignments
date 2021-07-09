@@ -10,14 +10,17 @@ export default function Home() {
 
     async function callGetAllCardsAPI() {
         const cards = await api.getAllCards();
-        console.log(cards.data.data)
-        setCards(cards.data.data);
+        if (cards && cards.data && cards.data.data) {
+            setCards(cards.data.data);
+        } else {
+            setCards([]);
+        }       
     }
 
     async function callDeleteAllCardsAPI() {
         await api.deleteAllCards().then(res => {
             window.alert(`Cards deleted successfully`);
-            setCards(cards.data.data);
+            setCards([]);
         })
     }
 
