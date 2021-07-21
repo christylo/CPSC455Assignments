@@ -35,7 +35,7 @@ export default function Home() {
                     <img id="Logo" src={daisyLogo} alt="Daisy Logo" />
                     <p id="Title">Memory Collection</p>
                 </div>
-                <p>Store photo memories in digital polaroids!</p>
+                <p>Store photo memories with digital polaroids!</p>
                 <hr></hr>
                 <h2 class="heading">Add Polaroid</h2>
                 <div id="AddCard">
