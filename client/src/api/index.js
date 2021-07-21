@@ -1,8 +1,14 @@
 import axios from 'axios'
-
-const api = axios.create({
-    baseURL: 'http://localhost:'+process.env.PORT+'/api',
-})
+let api;
+if (process.env.NODE_ENV == 'production') {
+    api = axios.create({
+        baseURL: 'https://memory-collection.herokuapp.com/',
+    })
+} else {
+    api = axios.create({
+        baseURL: 'http://localhost:'+process.env.PORT+'/api',
+    })
+}
 
 export const insertCard = payload => api.post(`/card`, payload)
 export const getAllCards = () => api.get(`/cards`)
