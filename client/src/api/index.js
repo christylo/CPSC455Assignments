@@ -1,7 +1,8 @@
 import axios from 'axios'
+require('dotenv').config()
 
 const api = axios.create({
-    baseURL: 'http://localhost:9000/api',
+    baseURL: 'http://localhost:'+process.env.PORT+'/api',
 })
 
 export const insertCard = payload => api.post(`/card`, payload)
