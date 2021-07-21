@@ -2,7 +2,7 @@ import axios from 'axios'
 let api;
 if (process.env.NODE_ENV == 'production') {
     api = axios.create({
-        baseURL: 'https://memory-collection.herokuapp.com/',
+        baseURL: 'https://memory-collection.herokuapp.com/api',
     })
 } else {
     api = axios.create({
